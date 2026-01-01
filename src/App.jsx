@@ -24,7 +24,7 @@ export default function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/my-profile' element={<MyProfile/>}/>
         <Route path='/my-appointments' element={<MyAppointments/>}/>
-        <Route path='/appointment/:docId' element={<Appointments/>}/>
+        <Route path='/appointments/:docId' element={<Appointments/>}/>
       </Routes>
       <Footer/>
     </div>
