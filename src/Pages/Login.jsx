@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export default function Login() {
-  return (
-    <div></div>
-  )
-}
-=======
 import React, { useState } from 'react'
 
 const Login = () => {
@@ -92,4 +83,3 @@ const Login = () => {
 }
 
 export default Login
->>>>>>> main
