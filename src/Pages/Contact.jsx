@@ -1,12 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
-
-export default function Contact() {
-  return (
-    <div></div>
-  )
-}
-=======
 import { assets } from '../assets/assets'
 
 const Contact = () => {
@@ -58,4 +50,3 @@ const Contact = () => {
 }
 
 export default Contact
->>>>>>> main

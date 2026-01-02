@@ -1,12 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
-
-export default function About() {
-  return (
-    <div></div>
-  )
-}
-=======
 import { assets } from '../assets/assets'
 
 const About = () => {
@@ -74,4 +66,3 @@ const About = () => {
 }
 
 export default About
->>>>>>> main
