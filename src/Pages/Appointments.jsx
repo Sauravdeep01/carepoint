@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
 import { assets } from "../assets/assets";
+import RelatedDoctors from "../Components/RelatedDoctors";
 
 const Appointments = () => {
   const { docId } = useParams();
@@ -74,10 +75,10 @@ const Appointments = () => {
     docInfo && (
       <div className="flex flex-col items-center mt-10 mb-20 px-4">
         
-        {/* --- Parent Container --- */}
-        <div className="flex flex-col sm:flex-row gap-4 max-w-5xl w-full items-start">
+        {/* --- Main Row Container: Image + Right Side Info --- */}
+        <div className="flex flex-col sm:flex-row gap-5 max-w-5xl w-full items-start">
           
-          {/* --- LEFT SIDE: Doctor Image --- */}
+          {/* --- LEFT SIDE: Doctor Image (Indigo background stays here) --- */}
           <div className="bg-indigo-400 w-full sm:max-w-72 rounded-2xl overflow-hidden shadow-md shrink-0">
             <img className="w-full h-auto object-cover" src={docInfo.image} alt={docInfo.name} />
           </div>
@@ -110,7 +111,6 @@ const Appointments = () => {
             <div className="border border-gray-200 rounded-2xl p-8 py-7 bg-white shadow-sm font-medium text-gray-700">
               <p className="text-lg">Booking slots</p>
               
-              {/* Day Selection Row */}
               <div className="flex gap-3 items-center w-full overflow-x-auto mt-4 pb-2">
                 {docSlots.length > 0 && docSlots.map((item, index) => (
                   <div 
@@ -124,14 +124,13 @@ const Appointments = () => {
                 ))}
               </div>
 
-              {/* Time Selection Row - FIXED HEIGHT to prevent div jumping */}
               <div className="flex items-center gap-3 w-full overflow-x-auto mt-6 pb-2 min-h-[50px]">
                 {docSlots.length > 0 && docSlots[slotIndex].length > 0 ? (
                   docSlots[slotIndex].map((item, index) => (
                     <p 
                       key={index}
                       onClick={() => setSlotTime(item.time)}
-                      className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer transition-all duration-300 ${item.time === slotTime ? 'bg-indigo-600 text-white shadow-sm' : 'text-gray-400 border border-gray-300 hover:bg-gray-50'}`}
+                      className={`text-sm font-light shrink-0 px-5 py-2 rounded-full cursor-pointer transition-all duration-300 ${item.time === slotTime ? 'bg-indigo-600 text-white shadow-sm' : 'text-gray-400 border border-gray-300 hover:bg-gray-50'}`}
                     >
                       {item.time.toLowerCase()}
                     </p>
@@ -147,6 +146,13 @@ const Appointments = () => {
             </div>
           </div>
         </div>
+
+        {/* --- MOVED OUTSIDE: Related Doctors Section --- */}
+        {/* Placing this here ensures it spans the full width and doesn't affect the image container height */}
+        <div className="w-full max-w-5xl mt-10">
+          <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
+        </div>
+
       </div>
     )
   );
