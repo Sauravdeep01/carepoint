@@ -1,0 +1,50 @@
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Home from './Pages/Home'
+import About from './Pages/About'
+import Doctor from './Pages/Doctor'
+import Contact from './Pages/Contact'
+import Login from './Pages/Login'
+import MyProfile from './Pages/MyProfile'
+import MyAppointments from './Pages/MyAppointments'
+import Appointments from './Pages/Appointments'
+import Navbar from './Components/Navbar'
+import Footer from './Components/Footer'
+import AdminLayout from './Layouts/AdminLayout'
+import DoctorLayout from './Layouts/DoctorLayout'
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export default function App() {
+  return (
+    <div>
+      <ToastContainer />
+      <Routes>
+        {/* Admin Routes */}
+        <Route path='/admin/*' element={<AdminLayout />} />
+        <Route path='/doctor/*' element={<DoctorLayout />} />
+
+        {/* User Routes */}
+        <Route path='/*' element={
+          <div className='mx-4 sm:mx-[10%]'>
+            <Navbar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/doctors' element={<Doctor />} />
+              <Route path='/doctors/:speciality' element={<Doctor />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/my-profile' element={<MyProfile />} />
+              <Route path='/my-appointments' element={<MyAppointments />} />
+              <Route path='/appointments/:docId' element={<Appointments />} />
+            </Routes>
+            <Footer />
+          </div>
+        } />
+      </Routes>
+    </div>
+  )
+}
+
