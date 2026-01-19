@@ -6,7 +6,7 @@ import { doctors } from "../assets/assets";
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-    const backendUrl = 'http://192.168.1.11:4000'
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
     const [doctorsList, setDoctorsList] = useState(doctors)
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false)
     const [userData, setUserData] = useState(false)
