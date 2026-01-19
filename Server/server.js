@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
     res.send('API Working')
 })
 
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ success: true, message: 'Server is healthy' })
+})
+
 app.listen(port, () => console.log('Server started on PORT ' + port))
 
 export default app
